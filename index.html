@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pennora — Coming Soon</title>
+  <meta name="description" content="Pennora is being lovingly built. A warm, simple home for your pennies is on its way." />
+  <meta name="theme-color" content="#0f1512" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pennora — Coming Soon" />
+  <meta property="og:description" content="A warm, simple home for your pennies is on its way." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pennora.org" />
+
+  <link rel="icon" href="pennora-logo.png" type="image/png" />
+
+  <style>
+    :root {
+      --bg: #0f1512;
+      --bg-2: #131b17;
+      --mint: #4bbf8f;
+      --mint-soft: #79d6ae;
+      --ink: #eef4f0;
+      --muted: #93a49c;
+      --ring: rgba(75, 191, 143, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1100px 600px at 50% -10%, rgba(75, 191, 143, 0.16), transparent 60%),
+        radial-gradient(900px 500px at 85% 110%, rgba(75, 191, 143, 0.10), transparent 55%),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      min-height: 100dvh;
+      padding: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating coins drifting in the background */
+    .coins {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .coin {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, var(--mint-soft), var(--mint));
+      opacity: 0.18;
+      animation: rise linear infinite;
+      bottom: -40px;
+    }
+    .coin:nth-child(1)  { left: 8%;  width: 10px; height: 10px; animation-duration: 22s; animation-delay: 0s;  }
+    .coin:nth-child(2)  { left: 20%; width: 18px; height: 18px; animation-duration: 28s; animation-delay: 4s;  }
+    .coin:nth-child(3)  { left: 34%; width: 8px;  height: 8px;  animation-duration: 19s; animation-delay: 2s;  }
+    .coin:nth-child(4)  { left: 47%; width: 22px; height: 22px; animation-duration: 32s; animation-delay: 7s;  }
+    .coin:nth-child(5)  { left: 61%; width: 12px; height: 12px; animation-duration: 24s; animation-delay: 1s;  }
+    .coin:nth-child(6)  { left: 73%; width: 16px; height: 16px; animation-duration: 30s; animation-delay: 6s;  }
+    .coin:nth-child(7)  { left: 86%; width: 9px;  height: 9px;  animation-duration: 21s; animation-delay: 3s;  }
+    .coin:nth-child(8)  { left: 92%; width: 20px; height: 20px; animation-duration: 34s; animation-delay: 9s;  }
+
+    @keyframes rise {
+      0%   { transform: translateY(0) rotate(0deg);      opacity: 0; }
+      10%  { opacity: 0.20; }
+      90%  { opacity: 0.20; }
+      100% { transform: translateY(-115dvh) rotate(240deg); opacity: 0; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(620px, 100%);
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 56px 40px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 30px 80px -40px rgba(0,0,0,0.7);
+    }
+
+    .logo {
+      width: 190px;
+      max-width: 70%;
+      height: auto;
+      margin: 0 auto 8px;
+      display: block;
+      filter: drop-shadow(0 8px 24px rgba(75, 191, 143, 0.25));
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mint-soft);
+      background: rgba(75, 191, 143, 0.10);
+      border: 1px solid var(--ring);
+      padding: 7px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+    .badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--mint);
+      box-shadow: 0 0 0 0 var(--ring);
+      animation: pulse 2.2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(75, 191, 143, 0.5); }
+      70%  { box-shadow: 0 0 0 10px rgba(75, 191, 143, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(75, 191, 143, 0); }
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.15;
+      margin: 6px 0 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    h1 .accent { color: var(--mint-soft); }
+
+    p.lede {
+      color: var(--muted);
+      font-size: clamp(15px, 2.4vw, 18px);
+      line-height: 1.6;
+      margin: 0 auto 30px;
+      max-width: 44ch;
+    }
+
+    /* Whimsical progress bar */
+    .progress {
+      height: 10px;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto 12px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 64%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--mint), var(--mint-soft));
+      background-size: 200% 100%;
+      animation: shimmer 2.5s linear infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .progress-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 34px;
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .footer a {
+      color: var(--mint-soft);
+      text-decoration: none;
+    }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .coin, .progress span, .badge .dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- drifting coins -->
+  <div class="coins" aria-hidden="true">
+    <span class="coin"></span><span class="coin"></span><span class="coin"></span>
+    <span class="coin"></span><span class="coin"></span><span class="coin"></span>
+    <span class="coin"></span><span class="coin"></span>
+  </div>
+
+  <main class="card">
+    <img class="logo" src="pennora-logo.png" alt="Pennora" />
+
+    <div class="badge"><span class="dot"></span> Under Construction</div>
+
+    <h1>Every great fortune starts with a single <span class="accent">penny</span>.</h1>
+
+    <p class="lede">
+      We're gathering our pennies, tidying the ledgers and polishing the pixels.
+      Pennora — a warm, simple home for your money — is on its way.
+    </p>
+
+    <div class="progress" role="progressbar" aria-label="Build progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64">
+      <span></span>
+    </div>
+    <p class="progress-note">Counting the coins&hellip; roughly 64% of the way there.</p>
+
+    <p class="footer">
+      Made with care &middot; <a href="https://pennora.org">pennora.org</a>
+    </p>
+  </main>
+</body>
+</html>
