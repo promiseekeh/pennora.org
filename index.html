@@ -4,14 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pennora — Coming Soon</title>
-  <meta name="description" content="Pennora is being lovingly built. A warm, simple home for your pennies is on its way." />
+  <meta name="description" content="Pennora — a simple, private personal finance tracker for income, expenses, savings and investments. Coming soon." />
   <meta name="theme-color" content="#0f1512" />
+  <link rel="canonical" href="https://pennora.org/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Pennora — Coming Soon" />
-  <meta property="og:description" content="A warm, simple home for your pennies is on its way." />
+  <meta property="og:description" content="A simple, private home for your money is on its way." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pennora.org" />
+  <meta property="og:site_name" content="Pennora" />
+  <meta property="og:image" content="https://pennora.org/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pennora — Coming Soon" />
+  <meta name="twitter:description" content="A simple, private home for your money is on its way." />
+  <meta name="twitter:image" content="https://pennora.org/og-image.png" />
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f1512'/%3E%3Crect x='16' y='19' width='32' height='8' rx='4' fill='%23eef4f0'/%3E%3Crect x='16' y='31' width='24' height='8' rx='4' fill='%23eef4f0'/%3E%3Crect x='16' y='43' width='17' height='8' rx='4' fill='%234bbf8f'/%3E%3C/svg%3E" />
 
@@ -178,6 +189,66 @@
       margin: 0 0 34px;
     }
 
+    .subtitle {
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.5;
+      margin: -14px auto 26px;
+      max-width: 40ch;
+      opacity: 0.92;
+    }
+
+    /* Email capture */
+    .signup {
+      display: flex;
+      gap: 8px;
+      max-width: 400px;
+      margin: 0 auto 10px;
+      flex-wrap: wrap;
+    }
+    .signup input {
+      flex: 1 1 200px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+      font-size: 15px;
+      font-family: inherit;
+    }
+    .signup input::placeholder { color: var(--muted); }
+    .signup input:focus {
+      outline: none;
+      border-color: var(--mint);
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+    .signup button {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg, var(--mint), var(--mint-soft));
+      color: #0f1512;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: filter 0.15s;
+    }
+    .signup button:hover { filter: brightness(1.06); }
+    .signup-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 30px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
     .footer {
       color: var(--muted);
       font-size: 13px;
@@ -215,10 +286,20 @@
       Stay tuned.
     </p>
 
+    <p class="subtitle">A simple, private place to track your income, spending, savings &amp; investments.</p>
+
     <div class="progress" role="progressbar" aria-label="Build progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35">
       <span></span>
     </div>
     <p class="progress-note">Counting the coins&hellip; roughly 35% of the way there.</p>
+
+    <!-- Replace REPLACE_WITH_FORM_ID with your Formspree form ID (https://formspree.io) to collect sign-ups. -->
+    <form class="signup" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+      <label class="sr-only" for="email">Email address</label>
+      <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="signup-note">Be the first to know when Pennora launches. No spam, ever.</p>
 
     <p class="footer">
       Made with care &middot; <a href="https://pennora.org">pennora.org</a>
