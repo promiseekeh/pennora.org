@@ -173,7 +173,7 @@
     .progress span {
       display: block;
       height: 100%;
-      width: 35%;
+      width: 0%;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--mint), var(--mint-soft));
       background-size: 200% 100%;
@@ -288,10 +288,10 @@
 
     <p class="subtitle">A simple, private place to track your income, spending, savings &amp; investments.</p>
 
-    <div class="progress" role="progressbar" aria-label="Build progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35">
+    <div class="progress" role="progressbar" aria-label="Build progress" aria-valuemin="0" aria-valuemax="100" data-progress="35">
       <span></span>
     </div>
-    <p class="progress-note">Counting the coins&hellip; roughly 35% of the way there.</p>
+    <p class="progress-note">Counting the coins&hellip; roughly <span id="progressPct">35</span>% of the way there.</p>
 
     <!-- Replace REPLACE_WITH_FORM_ID with your Formspree form ID (https://formspree.io) to collect sign-ups. -->
     <form class="signup" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
@@ -305,5 +305,16 @@
       Made with care &middot; <a href="https://pennora.org">pennora.org</a>
     </p>
   </main>
+
+  <script>
+    (function () {
+      var bar = document.querySelector('.progress');
+      var pct = Math.max(0, Math.min(100, Number(bar.dataset.progress) || 0));
+      bar.setAttribute('aria-valuenow', pct);
+      bar.querySelector('span').style.width = pct + '%';
+      var note = document.getElementById('progressPct');
+      if (note) note.textContent = pct;
+    })();
+  </script>
 </body>
 </html>
