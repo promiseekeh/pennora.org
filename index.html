@@ -293,13 +293,18 @@
     </div>
     <p class="progress-note">Counting the coins&hellip; roughly <span id="progressPct">35</span>% of the way there.</p>
 
-    <!-- Replace REPLACE_WITH_FORM_ID with your Formspree form ID (https://formspree.io) to collect sign-ups. -->
-    <form class="signup" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+    <!-- Submissions post to a Google Form; responses land in its linked Google Sheet. -->
+    <form id="signupForm" class="signup"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSefyJ3kWSMIP17B37P0WXrNudPo2hJ_nSi67h1beElF7553GA/formResponse"
+          method="POST" target="hidden_iframe"
+          onsubmit="setTimeout(function(){document.getElementById('signupForm').hidden=true;document.getElementById('signupNote').hidden=true;document.getElementById('signupThanks').hidden=false;},250);">
       <label class="sr-only" for="email">Email address</label>
-      <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+      <input id="email" type="email" name="entry.609537040" placeholder="you@example.com" autocomplete="email" required />
       <button type="submit">Notify me</button>
     </form>
-    <p class="signup-note">Be the first to know when Pennora launches. No spam, ever.</p>
+    <p class="signup-note" id="signupNote">Be the first to know when Pennora launches. No spam, ever.</p>
+    <p class="signup-note" id="signupThanks" hidden>Thanks! You&rsquo;re on the list. &#127881;</p>
+    <iframe name="hidden_iframe" title="Form submission target" style="display:none"></iframe>
 
     <p class="footer">
       Made with care &middot; <a href="https://pennora.org">pennora.org</a>
