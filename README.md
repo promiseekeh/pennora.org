@@ -14,12 +14,12 @@ being built.
 | `og-image.png` | Social share preview image (1200×630) |
 | `robots.txt` | Crawler directives + sitemap reference |
 | `sitemap.xml` | Sitemap for search engines |
-| `CNAME` | Custom domain for GitHub Pages (`pennora.org`) |
+| `CNAME` | Custom domain for GitHub Pages (`getpennora.com`) |
 
 ## Hosting
 
 Served via **GitHub Pages** from the `main` branch (root), with the custom domain
-`pennora.org` and HTTPS enforced.
+`getpennora.com` and HTTPS enforced.
 
 ## Local preview
 

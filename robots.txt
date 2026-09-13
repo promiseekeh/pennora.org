@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pennora.org/sitemap.xml
+Sitemap: https://getpennora.com/sitemap.xml
